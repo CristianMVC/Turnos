@@ -1,0 +1,4 @@
+turnos:
+    resource: '@TurnosBundle/Controller/'
+    type: annotation
+    prefix:   /

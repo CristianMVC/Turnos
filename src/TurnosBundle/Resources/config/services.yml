@@ -1,0 +1,19 @@
+services:
+#    turnos.example:
+#        class: TurnosBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
+
+
+    UserServices:
+        class: TurnosBundle\Helpers\Usuario\UsuarioServices
+        arguments: [ "@doctrine.orm.entity_manager" , "@service_container" ]
+
+
+    MailServices:
+        class: TurnosBundle\Helpers\Usuario\NotificacionUsuario
+        arguments: ["@service_container"]
+
+
+    ValidarUsuario:
+        class: TurnosBundle\Helpers\Usuario\ValidarUsuario
+

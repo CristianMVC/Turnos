@@ -67,7 +67,7 @@ class NotificacionUsuario
 
 
      $response = Request::post($url, $this->getHeaders(true), $body);
-     die();
+
      $errors = $this->checkErrors($response->body);
      if ($errors) {
          return $errors;

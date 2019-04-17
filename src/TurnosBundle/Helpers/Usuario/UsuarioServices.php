@@ -28,10 +28,8 @@ class UsuarioServices {
 
     public function  crearUsuario($params,$authorization){
 
-        $this->container->get('MailServices')->notificacion($params,$params['username'],"20323356328","hola mundo");
-        die();
 
-       $validar = $this->container->get('ValidarUsuario')->notificacion();
+       $validar = $this->container->get('ValidarUsuario');
        if($validar->validarParams($params) != null){
            return $this->respuestaError($validar->validarParams($params));
        } else {
@@ -48,6 +46,8 @@ class UsuarioServices {
            $this->em->persist($usuario);
            $this->em->flush();
 
+           $this->container->get('MailServices')->notificacion($params,$params['username'],"20323356328","hola mundo");
+
            $this->container->get('MailServices')->getEnvironment();
            return $this->respuestaOk("Usuario creado correctamente");
 
@@ -58,7 +58,7 @@ class UsuarioServices {
            }
        }
 
-      return;
+      return null;
 
     }
 
